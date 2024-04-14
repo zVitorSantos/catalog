@@ -1,0 +1,305 @@
+definitions:
+  handler.CreateProductRequest:
+    properties:
+      altura:
+        type: integer
+      categoria_1:
+        type: string
+      categoria_2:
+        type: string
+      categoria_3:
+        type: string
+      complementos:
+        type: string
+      comprimento:
+        type: integer
+      descricao:
+        type: string
+      desenho:
+        type: boolean
+      imagem:
+        type: string
+      largura:
+        type: integer
+      material:
+        type: string
+      matriz:
+        type: boolean
+      peso:
+        type: integer
+      piloto:
+        type: boolean
+      ref:
+        type: string
+      valor:
+        type: integer
+    type: object
+  handler.CreateProductResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.ProductResponse'
+      message:
+        type: string
+    type: object
+  handler.DeleteProductResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.ProductResponse'
+      message:
+        type: string
+    type: object
+  handler.ErrorResponse:
+    properties:
+      errorCode:
+        type: string
+      message:
+        type: string
+    type: object
+  handler.ListProductsResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/schemas.ProductResponse'
+        type: array
+      message:
+        type: string
+    type: object
+  handler.ShowProductResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.ProductResponse'
+      message:
+        type: string
+    type: object
+  handler.UpdateProductRequest:
+    properties:
+      altura:
+        type: integer
+      categoria_1:
+        type: string
+      categoria_2:
+        type: string
+      categoria_3:
+        type: string
+      complementos:
+        type: string
+      comprimento:
+        type: integer
+      descricao:
+        type: string
+      desenho:
+        type: boolean
+      imagem:
+        type: string
+      largura:
+        type: integer
+      material:
+        type: string
+      matriz:
+        type: boolean
+      peso:
+        type: integer
+      piloto:
+        type: boolean
+      ref:
+        type: string
+      valor:
+        type: integer
+    type: object
+  handler.UpdateProductResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.ProductResponse'
+      message:
+        type: string
+    type: object
+  schemas.ProductResponse:
+    properties:
+      altura:
+        type: integer
+      categoria_1:
+        type: string
+      categoria_2:
+        type: string
+      categoria_3:
+        type: string
+      complementos:
+        type: string
+      comprimento:
+        type: integer
+      createdAt:
+        type: string
+      deletedAt:
+        type: string
+      descricao:
+        type: string
+      desenho:
+        type: boolean
+      id:
+        type: integer
+      imagem:
+        type: string
+      largura:
+        type: integer
+      material:
+        type: string
+      matriz:
+        type: boolean
+      peso:
+        type: integer
+      piloto:
+        type: boolean
+      ref:
+        type: string
+      updatedAt:
+        type: string
+      valor:
+        type: integer
+    type: object
+info:
+  contact: {}
+paths:
+  /product:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a job product
+      parameters:
+      - description: Product identification
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.DeleteProductResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+      summary: Delete product
+      tags:
+      - Products
+    get:
+      consumes:
+      - application/json
+      description: Show a job product
+      parameters:
+      - description: Product identification
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.ShowProductResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+      summary: Show product
+      tags:
+      - Products
+    post:
+      consumes:
+      - application/json
+      description: Create a new job product
+      parameters:
+      - description: Request body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/handler.CreateProductRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.CreateProductResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+      summary: Create product
+      tags:
+      - Products
+    put:
+      consumes:
+      - application/json
+      description: Update a job product
+      parameters:
+      - description: Product Identification
+        in: query
+        name: id
+        required: true
+        type: string
+      - description: Product data to Update
+        in: body
+        name: product
+        required: true
+        schema:
+          $ref: '#/definitions/handler.UpdateProductRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.UpdateProductResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+      summary: Update product
+      tags:
+      - Products
+  /products:
+    get:
+      consumes:
+      - application/json
+      description: List all job products
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.ListProductsResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+      summary: List all products
+      tags:
+      - Products
+swagger: "2.0"
