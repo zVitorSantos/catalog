@@ -1,6 +1,9 @@
 package main
 
-import "github.com/zVitorSantos/catalog.git/config"
+import (
+	"github.com/zVitorSantos/catalog.git/config"
+	"github.com/zVitorSantos/catalog.git/router"
+)
 
 var (
 	logger *config.Logger
