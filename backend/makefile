@@ -3,7 +3,7 @@
 APP_NAME=catalog
 
 # Tasks
-default: run
+default: run-docs
 
 run:
 	@go run main.go
