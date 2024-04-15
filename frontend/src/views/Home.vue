@@ -1,9 +1,15 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+import Top from '../components/Top.vue'
+import Search from '../components/Search.vue'
+import List from '../components/List.vue'
+import Footer from '../components/Footer.vue'
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <Top />
+    <Search />
+    <List />
+    <Footer />
   </main>
 </template>
