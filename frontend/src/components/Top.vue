@@ -5,10 +5,10 @@
     </div>
 </template>
 
-<style>
+<style scoped>
 .top {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: flex-start;
     padding: 10px;
 }
@@ -20,10 +20,12 @@
 
 .entrar {
     padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: transparent;
+    font-size: 1.3rem;
+    color: #000;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-family: 'Acme', sans-serif;
 }
 </style>

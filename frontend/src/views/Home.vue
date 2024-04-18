@@ -9,7 +9,13 @@ import Footer from '../components/Footer.vue'
   <main>
     <Top />
     <Search />
-    <List />
+    <List class="list" />
     <Footer />
   </main>
 </template>
+
+<style scoped>
+.list {
+  margin-top: 15%;
+}
+</style>
