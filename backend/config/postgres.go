@@ -19,7 +19,7 @@ func InitializePostgreSQL() (*gorm.DB, error) {
 	password := os.Getenv("DB_PASSWORD")
 	dbname := os.Getenv("DB_NAME")
 
-	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable TimeZone=America/Sao_Paulo", host, user, password, dbname, port)
+	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=require TimeZone=America/Sao_Paulo", host, user, password, dbname, port)
 
 	// Create DB and connect
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
