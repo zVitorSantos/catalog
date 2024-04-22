@@ -1,13 +1,9 @@
 <template>
-    <div class="input-group">
-
-        <input class="form-control border-end-0 border" type="search" v-model="searchQuery" placeholder="Pesquisar"
-            id="example-search-input">
-        <span class="input-group-append">
-            <button class="btn btn-outline-secondary bg-white border-start-0 border-bottom-0 border ms-n5" type="button"
-                @click="search">
-                <i class="fa fa-search"></i>
-            </button>
+    <div class="input-group rounded">
+        <input type="search" class="form-control rounded" v-model="searchQuery" placeholder="Pesquisar" 
+            aria-label="Pesquisar" aria-describedby="search-addon" />
+        <span class="input-group-text border-0" id="search-addon">
+            <i class="fas fa-search"></i>
         </span>
     </div>
 </template>
@@ -41,8 +37,13 @@ body {
     min-width: 30rem;
     height: 3rem;
     position: absolute;
-    top: 30%;
+    top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.form-control {
+    border-width: 1px; 
+    border-color: black;
 }
 </style>
